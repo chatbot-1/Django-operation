@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container mt-5">
+    <form method="post">
+        {% csrf_token %}
+        <div class="write">
+            <div class="block">
+                <label for="">Topic</label>
+                <input name="topic" type="text">
+            </div>
+            <div class="block">
+                <label for="">Author</label>
+                <input name="author" type="text">
+            </div>
+            <div class="block">
+                <label for="">Title</label>
+                <input name="heading" type="text">
+            </div>
+            <div class="block">
+                <label for="">content</label>
+                <textarea name="content" id="" cols="30" rows="10"></textarea>
+            </div>
+            <div class="block">
+                <label for="">Upload cover image</label>
+                <input type="file" name="cover" id="">
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </form>
+    {{regular}}
+</div>
+{% endblock %}

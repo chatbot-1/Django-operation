@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<!-- <img style="height: 300px;" src="https://s38924.pcdn.co/wp-content/uploads/2020/09/Gravity-Forms-Contact-Form-Template.jpg" class="img-fluid" alt="..."> -->
+
+<div class="container-fluid my-4">
+    <div class="row">
+      <h1 class="text-center">Get In Touch</h1>
+
+      <div class="col-6">
+        <form method="post">
+          {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Full Name</label>
+              <input type="text" class="form-control" name="full_name">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" name="email_add">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Phone Number</label>
+              <input type="number" class="form-control" name="phone_num">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Address</label>
+              <input type="text" class="form-control" name="address_data">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" name="password_add">
+            </div>
+            <div class="form-floating">
+              <label for="exampleInputPassword1" class="form-label">Message</label>
+              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="message_here"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Reset</button>
+            <button type="submit" class="btn btn-success">Submit</button>
+          </form>
+      </div>
+      <div class="col-6">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.9345075398282!2d77.48928231507924!3d28.4815189324776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce8ba81555555%3A0x738ac1a025bee778!2sIIMT%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1690890284611!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+{% endblock %}
