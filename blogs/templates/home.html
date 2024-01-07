@@ -2,61 +2,99 @@
 
 {% block body %}
 {% load static %}
-<!-- <link rel="stylesheet" href="{% static " css/home.css" %}"> -->
-<div class="home">
-  <div id="carouselExample" class="carousel slide">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img style="height: 92.7vh; width: 100%; object-fit: cover;"
-          src="https://images.unsplash.com/photo-1690927324993-53afef8c85ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-          class="d-block w-100" alt="">
-      </div>
-      <div class="carousel-item">
-        <img
-          src="https://images.unsplash.com/photo-1614601649827-ec9c0eaded8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80"
-          class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img
-          src="https://images.unsplash.com/photo-1498019559366-a1cbd07b5160?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=858&q=80"
-          class="d-block w-100" alt="...">
-      </div>
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+<div class="hero-img">
+  <img
+    src="https://images.unsplash.com/photo-1503945438517-f65904a52ce6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    alt="">
+</div>
+
+<div class="hero-data">
+  <h1>Want an Edge in your <br> Blogging career?</h1>
+  <p>Join us at <span>Blog.venture</span>, and get started</p>
+  <a href="{% url 'addBlog' %}">Start -></a>
+</div>
+
+<div class="popular-blog">
+
+  <div class="section1">
+
+    <div class="blog-header">
+      <h1>Popular Blogs</h1>
+      <p>Get all the popular blogs here</p>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-  <div class="home-content">
-    <div class="home-data container">
-      <a href="/write/" style="font-size: 40px; padding: 10px 15px; background: plum; cursor: pointer; border-radius: 5px;"><h1 style="text-align: center; margin-top: 30px;"></h1>Write your own blog</h1></a>
-      <div class="home-head" style="text-align: center; margin-top: 50px;">
-        <h1>Get Started With Blogging</h1>
-        <p>Unexpected experience</p>
-        <!-- <h5>{{popularBlogs}}</h5> -->
-      </div>
 
-      <div class="home-box" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+    <div class="blog-cards">
+
       {% for obj in popularBlogs %}
-
-        <div class="card" style="width: 18rem;">
-          <img src="https://images.unsplash.com/photo-1690609998976-929dca8ba3de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=906&q=80" class="card-img-top" alt="...">
+      <div class="card">
+        <div class="card-matter">
+          <img src="/media/{{obj.cover}}" class="card-img-top" alt="...">
+          <h5 class="card-header">{{obj.topic}}</h5>
           <div class="card-body">
-            <p class="card-title">{{obj.author}}</p>
-            <h5 class="card-title">{{obj.topic}}</h5>
-            <p class="card-text">{{obj.content|safe|truncatechars:150|linebreaks}}</p>
-            <p class="card-text">Posted Date : {{obj.postDate}}</p>
-            <a href="{% url 'viewBlog' obj.id %}" class="btn btn-primary">View More</a>
+            <div class="card-text">
+              <p>{{obj.content|safe|truncatechars:150|linebreaks}}</p>
+              <a href="{% url 'viewBlog' obj.id %}" class="view-more">View More</a>
+            </div>
+            <div class="card-bottom">
+              <div class="card-date">
+                <p>Posted date</p>
+                <span>{{obj.postDate}}</span>
+              </div>
+              <div class="card-author">
+                <p>Author</p>
+                <span>{{obj.author}}</span>
+              </div>
+            </div>
+
           </div>
         </div>
-        {% endfor %}
-        
       </div>
+      {% endfor %}
+
     </div>
+
   </div>
+
+  <div class="section2">
+
+    <div class="blog-header">
+      <h1>Newest Blogs</h1>
+      <p>Explore more blogs here</p>
+    </div>
+
+    <div class="blog-cards">
+
+      {% for obj in regularBlogs %}
+      <div class="card">
+        <div class="card-matter">
+          <img src="/media/{{obj.cover}}" class="card-img-top" alt="">
+          <h5 class="card-header">{{obj.topic}}</h5>
+          <div class="card-body">
+              <div class="card-text">
+                <p>{{obj.content|safe|truncatechars:150|linebreaks}}</p>
+                <a href="{% url 'viewRegular' obj.id %}" class="view-more">View More</a>
+              </div>
+              <div class="card-bottom">
+                <div class="card-date">
+                  <p>Posted date</p>
+                  <span>{{obj.postDate}}</span>
+                </div>
+                <div class="card-author">
+                  <p>Author</p>
+                  <span>{{obj.author}}</span>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+
 </div>
+
 {% endblock %}

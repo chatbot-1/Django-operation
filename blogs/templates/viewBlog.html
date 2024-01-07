@@ -1,19 +1,18 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="card mb-3" style="max-width: 540px; display: flex; justify-content: center; align-items: center;">
-    <div class="row g-0">
-        <div class="col-md-4">
-            <img src="https://images.unsplash.com/photo-1690609998976-929dca8ba3de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=906&q=80" class="img-fluid rounded-start" alt="...">
+<div class="view-card">
+    <div class="main-card">
+        <div class="view-img">
+            <img src="https://images.unsplash.com/photo-1690609998976-929dca8ba3de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=906&q=80"
+                class="card-img-top" alt="...">
         </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <p class="card-title">Author: {{viewBlog.author}}</p>
-                <h5 class="card-title">{{viewBlog.topic}}</h5>
-                <p class="card-text">{{viewBlog.content|safe}}</p>
-                <p class="card-text"><small class="text-body-secondary">{{viewBlog.postDate}}</small></p>
-                <a href="/">home</a>
-            </div>
+        <div class="view-data">
+            <p class="view-card-title">Author: {{viewBlog.author}}</p>
+            <h5 class="view-card-header">{{viewBlog.topic}}</h5>
+            <p class="viwe-card-text">{{viewBlog.content|safe}}</p>
+            <p class="view-card-text"><small class="text-body-secondary">Date: {{viewBlog.postDate}}</small></p>
+            <a href="/" class="btn-primary">home</a>
         </div>
     </div>
 </div>

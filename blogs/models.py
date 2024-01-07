@@ -1,19 +1,14 @@
 from django.db import models
 from ckeditor.fields import RichTextField
-
-# Create your models here.
-
-class ContactUs(models.Model):
-    fullname = models.CharField(max_length=100)
-    emailadd = models.CharField(max_length=100)
-    phonenum = models.IntegerField()
-    address = models.TextField()
+    
+class Contact(models.Model):
+    name = models.CharField(max_length=50)
+    number = models.IntegerField()
+    email = models.CharField(max_length=50)
     message = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
-        return super().__str__(self.fullname)
-    
+        return super.__str__(self.name)
 
 class Popular(models.Model):
     ranking = models.IntegerField()
@@ -21,12 +16,13 @@ class Popular(models.Model):
     heading = models.CharField(max_length=50)
     author = models.CharField(max_length=50)
     postDate = models.DateField(auto_now_add=True)
+    cover = models.ImageField(upload_to='new_blog', null=True)
     content = RichTextField()
 
-class Regular(models.Model):
+class Regular_blogs(models.Model):
     topic = models.CharField(max_length=50)
-    heading = models.CharField(max_length=50)
     author = models.CharField(max_length=50)
-    cover = models.ImageField(upload_to="img_folder")
-    postDate = models.DateField(auto_now_add=True)
+    title = models.CharField(max_length=50)
     content = RichTextField()
+    postDate = models.DateField(auto_now_add=True, null=True)
+    cover = models.ImageField(upload_to='new_blog')

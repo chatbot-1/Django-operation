@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from blogs.views import *
+from django.conf.urls.static import static
+from django.conf import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +28,15 @@ urlpatterns = [
     path('contact/', contact, name="contact"),
     path('write/', addBlog, name="addBlog"),
     path('viewBlog/<int:pk>', view_blog, name='viewBlog'),
+    path('viewRegular/<int:pk>', viewRegular, name='viewRegular'),
+    path('login/', log_in, name='login'),
+    path('signup/', sign_up, name='signup'),
+    path('reset/', reset, name='reset'),
+    path('logout/', log_out, name='logout'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
+
+urlpatterns += staticfiles_urlpatterns()

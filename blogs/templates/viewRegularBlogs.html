@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="view-card">
+    <div class="main-card">
+        <div class="view-img">
+            <img src="/media/{{viewRegular.cover}}"
+                class="card-img-top" alt="...">
+        </div>
+        <div class="view-data">
+            <p class="view-card-title">Author: {{viewRegular.author}}</p>
+            <h5 class="view-card-header">{{viewRegular.topic}}</h5>
+            <p class="viwe-card-text">{{viewRegular.content|safe}}</p>
+            <p class="view-card-text"><small class="text-body-secondary">Date: {{viewRegular.postDate}}</small></p>
+            <a href="/" class="btn-primary">home</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

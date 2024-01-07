@@ -2,32 +2,32 @@
 
 {% block body %}
 <div class="container mt-5">
-    <form method="post">
+    <form class="contact" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="write">
-            <div class="block">
+        <div class="write contact-data">
+            <div class="block contact-input">
                 <label for="">Topic</label>
                 <input name="topic" type="text">
             </div>
-            <div class="block">
+            <div class="block contact-input">
                 <label for="">Author</label>
                 <input name="author" type="text">
             </div>
-            <div class="block">
+            <div class="block contact-input">
                 <label for="">Title</label>
-                <input name="heading" type="text">
+                <input name="title" type="text">
             </div>
-            <div class="block">
+            <div class="block contact-input">
                 <label for="">content</label>
                 <textarea name="content" id="" cols="30" rows="10"></textarea>
             </div>
-            <div class="block">
+            <div class="block contact-input">
                 <label for="">Upload cover image</label>
                 <input type="file" name="cover" id="">
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
         </div>
     </form>
-    {{regular}}
+    
 </div>
 {% endblock %}
